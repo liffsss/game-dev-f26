@@ -1,5 +1,14 @@
 # AI in Practice: Game Design and Development
 
+## Local setup for this fork
+
+This fork pins Python 3.12 in `.python-version`. Install dependencies with
+`uv sync --frozen`, then play offline with `uv run --frozen python -m course_game`.
+Check readiness with `uv run --frozen python -m course_game.setup_check --offline --headless`.
+Live-provider setup will follow the instructor's institutional-credit instructions.
+
+Setup note: Codex assisted with environment configuration and this README addition.
+
 Student starter for COMS E6998 section 014, Fall 2026, a graduate-level course
 that also admits undergraduates under the stated enrollment policy. The
 syllabus on CourseWorks governs assignments. This starter contains an original
