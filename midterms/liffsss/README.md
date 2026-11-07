@@ -19,6 +19,10 @@ rats, plague and immigration. Three turns let a person finish quickly and
 keep each live evaluation episode to at most three calls. The forecast turns
 weather into a decision about how much risk to take with the grain reserve.
 
+The [Week 3 discussion](https://courseworks2.columbia.edu/courses/258228/discussion_topics/1669984)
+was the starting scope record: Ahl’s game and the shared grain tradeoff. The
+midterm preserves that tradeoff and narrows the campaign to three years.
+
 The historical reference was Ahl's *BASIC Computer Games* (1978),
 [pp. 78–79](https://www.atariarchives.org/basicgames/showpage.php?page=78).
 The scan is copyrighted and was consulted for rules and attribution. The code,
