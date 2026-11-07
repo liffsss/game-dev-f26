@@ -135,6 +135,9 @@ class VertexPolicy:
                 )
         except (TimeoutError, TimeoutException):
             return Decision(error="model_timeout")
+        except errors.UnknownApiResponseError:
+            # The SDK exception can contain an untrusted provider response body.
+            return Decision(error="invalid_provider_response")
         except errors.APIError as error:
             code = error.code
             if code in (408, 504):

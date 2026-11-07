@@ -1,0 +1,29 @@
+{
+  "implementation": {
+    "assistant": "Codex",
+    "instructions": "AGENTS.md",
+    "scope": "midterms/liffsss/ plus its own deterministic CI workflow",
+    "evidence": "AGENT-TEAM.md"
+  },
+  "skill": {
+    "name": "rule-change",
+    "path": "skills/rule-change/SKILL.md",
+    "modes": ["implementation", "independent verification"]
+  },
+  "review": {
+    "assistant": "Codex independent read-only subagent",
+    "instructions": "../../.claude/agents/rules-reviewer.md",
+    "findings": "review.md"
+  },
+  "game_player": {
+    "provider": "Vertex AI",
+    "model_env": "COURSE_MODEL",
+    "policy": "observation-only",
+    "tools": [],
+    "max_steps": 3,
+    "max_model_calls": 3,
+    "timeout_seconds_per_call": 15,
+    "fallback": null,
+    "evaluation_suite": "suite.json"
+  }
+}
