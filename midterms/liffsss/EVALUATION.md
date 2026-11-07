@@ -102,4 +102,7 @@ from the effect of the engine interface. Weather is stochastic and the suite
 shares one economy. After this frozen run, the most direct follow-up is to show
 the model a grain ledger or ask it to submit one part of the budget at a time,
 then compare invalid actions on a newly declared set of seeds. See
-[human playtest status](PLAYTEST.md) for evidence about clarity for people.
+[human playtest notes](PLAYTEST.md) for one player's feedback. After playing,
+they said they would favor drought-resistant seed above a 50% drought forecast
+and stick with it after a low harvest. Their feedback identifies a strategy to
+check in a future session with higher forecasts.

@@ -81,5 +81,5 @@ that same interface.
 
 - [Declared suite](suite.json) and [evaluation report](EVALUATION.md)
 - [Agent team log](AGENT-TEAM.md), [agent configuration](agent-config.json), and [independent review](review.md)
-- [Human playtest notes or status](PLAYTEST.md)
+- [Human playtest notes](PLAYTEST.md)
 - Recording link: pending a reviewer-accessible upload.

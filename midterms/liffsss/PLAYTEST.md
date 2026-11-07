@@ -1,15 +1,12 @@
 # Human playtest
 
-Status: pending. There is no observation from another player for this build yet.
+After playing, one anonymous tester said they would choose drought-resistant
+seed if the forecast showed a drought chance above 50%. They said a low
+harvest would not make them switch to the riskier crop. They described this as
+the strategy they would use in those conditions. We did not observe that
+decision at a forecast above 50%.
 
-Invite one person and have them play `python3.12 -m hamurabi --case steady --seed 404`
-from `midterms/liffsss/`. Read only the goal and let them choose their moves
-without hints. Watch what they do before explaining anything.
-
-- At the first forecast, do they compare both crops? What makes them choose one?
-- When they see the food and seed budget, do they know how much grain they can spend?
-- If a plan is refused or they see drought, what do they change on the next try?
-- At the end, ask what they were saving grain for and which choice felt consequential.
-
-Record a specific move, any hesitation, and the next change it suggests. Keep
-the tester anonymous. The session should take about five minutes.
+The tester saw the forecast as a reason to protect the grain reserve. In
+another session, I would watch how someone chooses at 40% and 55% and ask
+which number shaped their choice. That would help distinguish a forecast
+threshold from a comparison of seed costs and the two possible harvests.

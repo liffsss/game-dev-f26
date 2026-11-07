@@ -20,5 +20,5 @@ food bill for the 100-person starts. Raising both yields preserved the crop
 tradeoff and made a three-year win possible. The experiment kept the held-out cases and logged every budget error with the
 prompt frozen. The next comparison I would try is to give the
 policies the same scoring details and ask Gemini to work from a visible grain
-ledger. The [evaluation](EVALUATION.md) and [human playtest status](PLAYTEST.md)
+ledger. The [evaluation](EVALUATION.md) and [human playtest notes](PLAYTEST.md)
 show the evidence for that decision.
