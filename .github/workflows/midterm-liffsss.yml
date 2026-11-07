@@ -1,0 +1,33 @@
+name: Midterm liffsss
+
+on:
+  pull_request:
+    paths:
+      - 'midterms/liffsss/**'
+      - '.github/workflows/midterm-liffsss.yml'
+  push:
+    branches:
+      - 'liffsss/midterm'
+    paths:
+      - 'midterms/liffsss/**'
+      - '.github/workflows/midterm-liffsss.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  deterministic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: midterms/liffsss
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Rules and episode checks
+        run: python -m unittest discover -s tests -v

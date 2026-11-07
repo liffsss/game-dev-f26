@@ -1,0 +1,3393 @@
+{
+  "suite_version": "hamurabi-drought-suite-v1",
+  "source_sha256": "d976eb8705dd7f64a93813a94d69fe8b482b8da533d00d57eb934602f4d08738",
+  "started_at_utc": "2026-11-07T22:22:20+00:00",
+  "step_limit": 3,
+  "model_call_limit": 3,
+  "model_timeout_seconds": 15,
+  "model_output_token_limit": 1024,
+  "provider": "vertex",
+  "requested_model": "gemini-3.5-flash-lite",
+  "location": "global",
+  "prompt_id": "granary-public-v1",
+  "price": {
+    "model": "gemini-3.5-flash-lite",
+    "tier": "standard pay-as-you-go",
+    "checked_on": "2026-11-07",
+    "usd_per_million_input": 0.3,
+    "usd_per_million_cached_input": 0.03,
+    "usd_per_million_output_including_reasoning": 2.5,
+    "source": "https://cloud.google.com/model-garden/pricing"
+  },
+  "episodes": [
+    {
+      "case": "steady",
+      "seed": 101,
+      "policy": "baseline",
+      "outcome": {
+        "terminal": true,
+        "reason": "secured",
+        "score": 6853,
+        "success": true
+      },
+      "game_outcome": {
+        "terminal": true,
+        "reason": "secured",
+        "score": 6853,
+        "success": true
+      },
+      "steps": 3,
+      "step_attempts": 3,
+      "model_calls": 0,
+      "illegal_actions": 0,
+      "seconds": 0.0041,
+      "usage": {
+        "attempts_with_usage": 0,
+        "attempts_without_usage": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "thinking_tokens": 0,
+        "total_tokens": 0,
+        "cached_input_tokens": 0
+      },
+      "turns": [
+        {
+          "observation": {
+            "year": 1,
+            "years": 3,
+            "population": 100,
+            "land": 100,
+            "grain": 2800,
+            "drought_percent": 20,
+            "land_price": 18,
+            "previous_year": null,
+            "total_starved": 0,
+            "invalid_actions": 0,
+            "constants": {
+              "food_per_person": 20,
+              "acres_per_person": 2,
+              "max_trade": 20,
+              "regular": {
+                "seed_cost": 2,
+                "normal_yield": 30,
+                "drought_yield": 5
+              },
+              "resilient": {
+                "seed_cost": 3,
+                "normal_yield": 25,
+                "drought_yield": 20
+              }
+            }
+          },
+          "legal_actions": {
+            "type": "object",
+            "properties": {
+              "trade": {
+                "type": "integer",
+                "minimum": -20,
+                "maximum": 20
+              },
+              "feed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "regular": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 120
+              },
+              "resilient": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 120
+              }
+            },
+            "required": [
+              "trade",
+              "feed",
+              "regular",
+              "resilient"
+            ],
+            "additionalProperties": false,
+            "description": "Trade is signed acres (positive buys, negative sells). Feed is people. Total planting must fit land after trade and current labor. Total grain cost of trade, feed and seed cannot exceed stored grain."
+          },
+          "decision_seconds": 0.0016,
+          "action": {
+            "trade": 20,
+            "feed": 100,
+            "regular": 120,
+            "resilient": 0
+          },
+          "error": null,
+          "model_version": null,
+          "usage": null,
+          "transition": {
+            "accepted": true,
+            "reason": "accepted",
+            "event": {
+              "year": 1,
+              "drought": false,
+              "harvest": 3600,
+              "starved": 0,
+              "trade": 20,
+              "feed": 100,
+              "regular": 120,
+              "resilient": 0
+            },
+            "outcome": {
+              "terminal": false,
+              "reason": "ongoing",
+              "score": 7000,
+              "success": false
+            }
+          }
+        },
+        {
+          "observation": {
+            "year": 2,
+            "years": 3,
+            "population": 100,
+            "land": 120,
+            "grain": 3800,
+            "drought_percent": 25,
+            "land_price": 22,
+            "previous_year": {
+              "year": 1,
+              "drought": false,
+              "harvest": 3600,
+              "starved": 0,
+              "trade": 20,
+              "feed": 100,
+              "regular": 120,
+              "resilient": 0
+            },
+            "total_starved": 0,
+            "invalid_actions": 0,
+            "constants": {
+              "food_per_person": 20,
+              "acres_per_person": 2,
+              "max_trade": 20,
+              "regular": {
+                "seed_cost": 2,
+                "normal_yield": 30,
+                "drought_yield": 5
+              },
+              "resilient": {
+                "seed_cost": 3,
+                "normal_yield": 25,
+                "drought_yield": 20
+              }
+            }
+          },
+          "legal_actions": {
+            "type": "object",
+            "properties": {
+              "trade": {
+                "type": "integer",
+                "minimum": -20,
+                "maximum": 20
+              },
+              "feed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "regular": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 140
+              },
+              "resilient": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 140
+              }
+            },
+            "required": [
+              "trade",
+              "feed",
+              "regular",
+              "resilient"
+            ],
+            "additionalProperties": false,
+            "description": "Trade is signed acres (positive buys, negative sells). Feed is people. Total planting must fit land after trade and current labor. Total grain cost of trade, feed and seed cannot exceed stored grain."
+          },
+          "decision_seconds": 0.0019,
+          "action": {
+            "trade": 20,
+            "feed": 100,
+            "regular": 140,
+            "resilient": 0
+          },
+          "error": null,
+          "model_version": null,
+          "usage": null,
+          "transition": {
+            "accepted": true,
+            "reason": "accepted",
+            "event": {
+              "year": 2,
+              "drought": true,
+              "harvest": 700,
+              "starved": 0,
+              "trade": 20,
+              "feed": 100,
+              "regular": 140,
+              "resilient": 0
+            },
+            "outcome": {
+              "terminal": false,
+              "reason": "ongoing",
+              "score": 5180,
+              "success": false
+            }
+          }
+        },
+        {
+          "observation": {
+            "year": 3,
+            "years": 3,
+            "population": 100,
+            "land": 140,
+            "grain": 1780,
+            "drought_percent": 20,
+            "land_price": 25,
+            "previous_year": {
+              "year": 2,
+              "drought": true,
+              "harvest": 700,
+              "starved": 0,
+              "trade": 20,
+              "feed": 100,
+              "regular": 140,
+              "resilient": 0
+            },
+            "total_starved": 0,
+            "invalid_actions": 0,
+            "constants": {
+              "food_per_person": 20,
+              "acres_per_person": 2,
+              "max_trade": 20,
+              "regular": {
+                "seed_cost": 2,
+                "normal_yield": 30,
+                "drought_yield": 5
+              },
+              "resilient": {
+                "seed_cost": 3,
+                "normal_yield": 25,
+                "drought_yield": 20
+              }
+            }
+          },
+          "legal_actions": {
+            "type": "object",
+            "properties": {
+              "trade": {
+                "type": "integer",
+                "minimum": -20,
+                "maximum": 20
+              },
+              "feed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "regular": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 160
+              },
+              "resilient": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 160
+              }
+            },
+            "required": [
+              "trade",
+              "feed",
+              "regular",
+              "resilient"
+            ],
+            "additionalProperties": false,
+            "description": "Trade is signed acres (positive buys, negative sells). Feed is people. Total planting must fit land after trade and current labor. Total grain cost of trade, feed and seed cannot exceed stored grain."
+          },
+          "decision_seconds": 0.0003,
+          "action": {
+            "trade": -19,
+            "feed": 100,
+            "regular": 121,
+            "resilient": 0
+          },
+          "error": null,
+          "model_version": null,
+          "usage": null,
+          "transition": {
+            "accepted": true,
+            "reason": "accepted",
+            "event": {
+              "year": 3,
+              "drought": false,
+              "harvest": 3630,
+              "starved": 0,
+              "trade": -19,
+              "feed": 100,
+              "regular": 121,
+              "resilient": 0
+            },
+            "outcome": {
+              "terminal": true,
+              "reason": "secured",
+              "score": 6853,
+              "success": true
+            }
+          }
+        }
+      ],
+      "split": "development",
+      "estimated_cost_usd": 0.0
+    },
+    {
+      "case": "steady",
+      "seed": 101,
+      "policy": "vertex",
+      "outcome": {
+        "terminal": true,
+        "reason": "secured",
+        "score": 6900,
+        "success": true
+      },
+      "game_outcome": {
+        "terminal": true,
+        "reason": "secured",
+        "score": 6900,
+        "success": true
+      },
+      "steps": 3,
+      "step_attempts": 3,
+      "model_calls": 3,
+      "illegal_actions": 0,
+      "seconds": 3.9269,
+      "usage": {
+        "attempts_with_usage": 3,
+        "attempts_without_usage": 0,
+        "input_tokens": 1977,
+        "output_tokens": 98,
+        "thinking_tokens": null,
+        "total_tokens": 2075,
+        "cached_input_tokens": null
+      },
+      "turns": [
+        {
+          "observation": {
+            "year": 1,
+            "years": 3,
+            "population": 100,
+            "land": 100,
+            "grain": 2800,
+            "drought_percent": 20,
+            "land_price": 18,
+            "previous_year": null,
+            "total_starved": 0,
+            "invalid_actions": 0,
+            "constants": {
+              "food_per_person": 20,
+              "acres_per_person": 2,
+              "max_trade": 20,
+              "regular": {
+                "seed_cost": 2,
+                "normal_yield": 30,
+                "drought_yield": 5
+              },
+              "resilient": {
+                "seed_cost": 3,
+                "normal_yield": 25,
+                "drought_yield": 20
+              }
+            }
+          },
+          "legal_actions": {
+            "type": "object",
+            "properties": {
+              "trade": {
+                "type": "integer",
+                "minimum": -20,
+                "maximum": 20
+              },
+              "feed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "regular": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 120
+              },
+              "resilient": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 120
+              }
+            },
+            "required": [
+              "trade",
+              "feed",
+              "regular",
+              "resilient"
+            ],
+            "additionalProperties": false,
+            "description": "Trade is signed acres (positive buys, negative sells). Feed is people. Total planting must fit land after trade and current labor. Total grain cost of trade, feed and seed cannot exceed stored grain."
+          },
+          "decision_seconds": 1.5237,
+          "action": {
+            "trade": 20,
+            "feed": 100,
+            "regular": 60,
+            "resilient": 60
+          },
+          "error": null,
+          "model_version": "gemini-3.5-flash-lite",
+          "usage": {
+            "input_tokens": 622,
+            "output_tokens": 40,
+            "thinking_tokens": null,
+            "total_tokens": 662,
+            "cached_input_tokens": null
+          },
+          "transition": {
+            "accepted": true,
+            "reason": "accepted",
+            "event": {
+              "year": 1,
+              "drought": false,
+              "harvest": 3300,
+              "starved": 0,
+              "trade": 20,
+              "feed": 100,
+              "regular": 60,
+              "resilient": 60
+            },
+            "outcome": {
+              "terminal": false,
+              "reason": "ongoing",
+              "score": 6640,
+              "success": false
+            }
+          }
+        },
+        {
+          "observation": {
+            "year": 2,
+            "years": 3,
+            "population": 100,
+            "land": 120,
+            "grain": 3440,
+            "drought_percent": 25,
+            "land_price": 22,
+            "previous_year": {
+              "year": 1,
+              "drought": false,
+              "harvest": 3300,
+              "starved": 0,
+              "trade": 20,
+              "feed": 100,
+              "regular": 60,
+              "resilient": 60
+            },
+            "total_starved": 0,
+            "invalid_actions": 0,
+            "constants": {
+              "food_per_person": 20,
+              "acres_per_person": 2,
+              "max_trade": 20,
+              "regular": {
+                "seed_cost": 2,
+                "normal_yield": 30,
+                "drought_yield": 5
+              },
+              "resilient": {
+                "seed_cost": 3,
+                "normal_yield": 25,
+                "drought_yield": 20
+              }
+            }
+          },
+          "legal_actions": {
+            "type": "object",
+            "properties": {
+              "trade": {
+                "type": "integer",
+                "minimum": -20,
+                "maximum": 20
+              },
+              "feed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "regular": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 140
+              },
+              "resilient": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 140
+              }
+            },
+            "required": [
+              "trade",
+              "feed",
+              "regular",
+              "resilient"
+            ],
+            "additionalProperties": false,
+            "description": "Trade is signed acres (positive buys, negative sells). Feed is people. Total planting must fit land after trade and current labor. Total grain cost of trade, feed and seed cannot exceed stored grain."
+          },
+          "decision_seconds": 1.4178,
+          "action": {
+            "trade": 0,
+            "feed": 100,
+            "regular": 60,
+            "resilient": 60
+          },
+          "error": null,
+          "model_version": "gemini-3.5-flash-lite",
+          "usage": {
+            "input_tokens": 678,
+            "output_tokens": 29,
+            "thinking_tokens": null,
+            "total_tokens": 707,
+            "cached_input_tokens": null
+          },
+          "transition": {
+            "accepted": true,
+            "reason": "accepted",
+            "event": {
+              "year": 2,
+              "drought": true,
+              "harvest": 1500,
+              "starved": 0,
+              "trade": 0,
+              "feed": 100,
+              "regular": 60,
+              "resilient": 60
+            },
+            "outcome": {
+              "terminal": false,
+              "reason": "ongoing",
+              "score": 5840,
+              "success": false
+            }
+          }
+        },
+        {
+          "observation": {
+            "year": 3,
+            "years": 3,
+            "population": 100,
+            "land": 120,
+            "grain": 2640,
+            "drought_percent": 20,
+            "land_price": 25,
+            "previous_year": {
+              "year": 2,
+              "drought": true,
+              "harvest": 1500,
+              "starved": 0,
+              "trade": 0,
+              "feed": 100,
+              "regular": 60,
+              "resilient": 60
+            },
+            "total_starved": 0,
+            "invalid_actions": 0,
+            "constants": {
+              "food_per_person": 20,
+              "acres_per_person": 2,
+              "max_trade": 20,
+              "regular": {
+                "seed_cost": 2,
+                "normal_yield": 30,
+                "drought_yield": 5
+              },
+              "resilient": {
+                "seed_cost": 3,
+                "normal_yield": 25,
+                "drought_yield": 20
+              }
+            }
+          },
+          "legal_actions": {
+            "type": "object",
+            "properties": {
+              "trade": {
+                "type": "integer",
+                "minimum": -20,
+                "maximum": 20
+              },
+              "feed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "regular": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 140
+              },
+              "resilient": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 140
+              }
+            },
+            "required": [
+              "trade",
+              "feed",
+              "regular",
+              "resilient"
+            ],
+            "additionalProperties": false,
+            "description": "Trade is signed acres (positive buys, negative sells). Feed is people. Total planting must fit land after trade and current labor. Total grain cost of trade, feed and seed cannot exceed stored grain."
+          },
+          "decision_seconds": 0.9849,
+          "action": {
+            "trade": 0,
+            "feed": 100,
+            "regular": 70,
+            "resilient": 50
+          },
+          "error": null,
+          "model_version": "gemini-3.5-flash-lite",
+          "usage": {
+            "input_tokens": 677,
+            "output_tokens": 29,
+            "thinking_tokens": null,
+            "total_tokens": 706,
+            "cached_input_tokens": null
+          },
+          "transition": {
+            "accepted": true,
+            "reason": "accepted",
+            "event": {
+              "year": 3,
+              "drought": false,
+              "harvest": 3350,
+              "starved": 0,
+              "trade": 0,
+              "feed": 100,
+              "regular": 70,
+              "resilient": 50
+            },
+            "outcome": {
+              "terminal": true,
+              "reason": "secured",
+              "score": 6900,
+              "success": true
+            }
+          }
+        }
+      ],
+      "split": "development",
+      "estimated_cost_usd": 0.0008381
+    },
+    {
+      "case": "steady",
+      "seed": 102,
+      "policy": "baseline",
+      "outcome": {
+        "terminal": true,
+        "reason": "famine",
+        "score": -1700,
+        "success": false
+      },
+      "game_outcome": {
+        "terminal": true,
+        "reason": "famine",
+        "score": -1700,
+        "success": false
+      },
+      "steps": 3,
+      "step_attempts": 3,
+      "model_calls": 0,
+      "illegal_actions": 0,
+      "seconds": 0.0031,
+      "usage": {
+        "attempts_with_usage": 0,
+        "attempts_without_usage": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "thinking_tokens": 0,
+        "total_tokens": 0,
+        "cached_input_tokens": 0
+      },
+      "turns": [
+        {
+          "observation": {
+            "year": 1,
+            "years": 3,
+            "population": 100,
+            "land": 100,
+            "grain": 2800,
+            "drought_percent": 20,
+            "land_price": 18,
+            "previous_year": null,
+            "total_starved": 0,
+            "invalid_actions": 0,
+            "constants": {
+              "food_per_person": 20,
+              "acres_per_person": 2,
+              "max_trade": 20,
+              "regular": {
+                "seed_cost": 2,
+                "normal_yield": 30,
+                "drought_yield": 5
+              },
+              "resilient": {
+                "seed_cost": 3,
+                "normal_yield": 25,
+                "drought_yield": 20
+              }
+            }
+          },
+          "legal_actions": {
+            "type": "object",
+            "properties": {
+              "trade": {
+                "type": "integer",
+                "minimum": -20,
+                "maximum": 20
+              },
+              "feed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "regular": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 120
+              },
+              "resilient": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 120
+              }
+            },
+            "required": [
+              "trade",
+              "feed",
+              "regular",
+              "resilient"
+            ],
+            "additionalProperties": false,
+            "description": "Trade is signed acres (positive buys, negative sells). Feed is people. Total planting must fit land after trade and current labor. Total grain cost of trade, feed and seed cannot exceed stored grain."
+          },
+          "decision_seconds": 0.0026,
+          "action": {
+            "trade": 20,
+            "feed": 100,
+            "regular": 120,
+            "resilient": 0
+          },
+          "error": null,
+          "model_version": null,
+          "usage": null,
+          "transition": {
+            "accepted": true,
+            "reason": "accepted",
+            "event": {
+              "year": 1,
+              "drought": true,
+              "harvest": 600,
+              "starved": 0,
+              "trade": 20,
+              "feed": 100,
+              "regular": 120,
+              "resilient": 0
+            },
+            "outcome": {
+              "terminal": false,
+              "reason": "ongoing",
+              "score": 4000,
+              "success": false
+            }
+          }
+        },
+        {
+          "observation": {
+            "year": 2,
+            "years": 3,
+            "population": 100,
+            "land": 120,
+            "grain": 800,
+            "drought_percent": 25,
+            "land_price": 22,
+            "previous_year": {
+              "year": 1,
+              "drought": true,
+              "harvest": 600,
+              "starved": 0,
+              "trade": 20,
+              "feed": 100,
+              "regular": 120,
+              "resilient": 0
+            },
+            "total_starved": 0,
+            "invalid_actions": 0,
+            "constants": {
+              "food_per_person": 20,
+              "acres_per_person": 2,
+              "max_trade": 20,
+              "regular": {
+                "seed_cost": 2,
+                "normal_yield": 30,
+                "drought_yield": 5
+              },
+              "resilient": {
+                "seed_cost": 3,
+                "normal_yield": 25,
+                "drought_yield": 20
+              }
+            }
+          },
+          "legal_actions": {
+            "type": "object",
+            "properties": {
+              "trade": {
+                "type": "integer",
+                "minimum": -20,
+                "maximum": 20
+              },
+              "feed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "regular": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 140
+              },
+              "resilient": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 140
+              }
+            },
+            "required": [
+              "trade",
+              "feed",
+              "regular",
+              "resilient"
+            ],
+            "additionalProperties": false,
+            "description": "Trade is signed acres (positive buys, negative sells). Feed is people. Total planting must fit land after trade and current labor. Total grain cost of trade, feed and seed cannot exceed stored grain."
+          },
+          "decision_seconds": 0.0002,
+          "action": {
+            "trade": -20,
+            "feed": 62,
+            "regular": 0,
+            "resilient": 0
+          },
+          "error": null,
+          "model_version": null,
+          "usage": null,
+          "transition": {
+            "accepted": true,
+            "reason": "accepted",
+            "event": {
+              "year": 2,
+              "drought": false,
+              "harvest": 0,
+              "starved": 38,
+              "trade": -20,
+              "feed": 62,
+              "regular": 0,
+              "resilient": 0
+            },
+            "outcome": {
+              "terminal": false,
+              "reason": "ongoing",
+              "score": 720,
+              "success": false
+            }
+          }
+        },
+        {
+          "observation": {
+            "year": 3,
+            "years": 3,
+            "population": 62,
+            "land": 100,
+            "grain": 0,
+            "drought_percent": 20,
+            "land_price": 25,
+            "previous_year": {
+              "year": 2,
+              "drought": false,
+              "harvest": 0,
+              "starved": 38,
+              "trade": -20,
+              "feed": 62,
+              "regular": 0,
+              "resilient": 0
+            },
+            "total_starved": 38,
+            "invalid_actions": 0,
+            "constants": {
+              "food_per_person": 20,
+              "acres_per_person": 2,
+              "max_trade": 20,
+              "regular": {
+                "seed_cost": 2,
+                "normal_yield": 30,
+                "drought_yield": 5
+              },
+              "resilient": {
+                "seed_cost": 3,
+                "normal_yield": 25,
+                "drought_yield": 20
+              }
+            }
+          },
+          "legal_actions": {
+            "type": "object",
+            "properties": {
+              "trade": {
+                "type": "integer",
+                "minimum": -20,
+                "maximum": 0
+              },
+              "feed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 62
+              },
+              "regular": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "resilient": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              }
+            },
+            "required": [
+              "trade",
+              "feed",
+              "regular",
+              "resilient"
+            ],
+            "additionalProperties": false,
+            "description": "Trade is signed acres (positive buys, negative sells). Feed is people. Total planting must fit land after trade and current labor. Total grain cost of trade, feed and seed cannot exceed stored grain."
+          },
+          "decision_seconds": 0.0001,
+          "action": {
+            "trade": -20,
+            "feed": 25,
+            "regular": 0,
+            "resilient": 0
+          },
+          "error": null,
+          "model_version": null,
+          "usage": null,
+          "transition": {
+            "accepted": true,
+            "reason": "accepted",
+            "event": {
+              "year": 3,
+              "drought": true,
+              "harvest": 0,
+              "starved": 37,
+              "trade": -20,
+              "feed": 25,
+              "regular": 0,
+              "resilient": 0
+            },
+            "outcome": {
+              "terminal": true,
+              "reason": "famine",
+              "score": -1700,
+              "success": false
+            }
+          }
+        }
+      ],
+      "split": "development",
+      "estimated_cost_usd": 0.0
+    },
+    {
+      "case": "steady",
+      "seed": 102,
+      "policy": "vertex",
+      "outcome": {
+        "terminal": true,
+        "reason": "illegal_action",
+        "score": 4840,
+        "success": false
+      },
+      "game_outcome": {
+        "terminal": false,
+        "reason": "ongoing",
+        "score": 4840,
+        "success": false
+      },
+      "steps": 1,
+      "step_attempts": 2,
+      "model_calls": 2,
+      "illegal_actions": 1,
+      "seconds": 1.9699,
+      "usage": {
+        "attempts_with_usage": 2,
+        "attempts_without_usage": 0,
+        "input_tokens": 1300,
+        "output_tokens": 80,
+        "thinking_tokens": null,
+        "total_tokens": 1380,
+        "cached_input_tokens": null
+      },
+      "turns": [
+        {
+          "observation": {
+            "year": 1,
+            "years": 3,
+            "population": 100,
+            "land": 100,
+            "grain": 2800,
+            "drought_percent": 20,
+            "land_price": 18,
+            "previous_year": null,
+            "total_starved": 0,
+            "invalid_actions": 0,
+            "constants": {
+              "food_per_person": 20,
+              "acres_per_person": 2,
+              "max_trade": 20,
+              "regular": {
+                "seed_cost": 2,
+                "normal_yield": 30,
+                "drought_yield": 5
+              },
+              "resilient": {
+                "seed_cost": 3,
+                "normal_yield": 25,
+                "drought_yield": 20
+              }
+            }
+          },
+          "legal_actions": {
+            "type": "object",
+            "properties": {
+              "trade": {
+                "type": "integer",
+                "minimum": -20,
+                "maximum": 20
+              },
+              "feed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "regular": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 120
+              },
+              "resilient": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 120
+              }
+            },
+            "required": [
+              "trade",
+              "feed",
+              "regular",
+              "resilient"
+            ],
+            "additionalProperties": false,
+            "description": "Trade is signed acres (positive buys, negative sells). Feed is people. Total planting must fit land after trade and current labor. Total grain cost of trade, feed and seed cannot exceed stored grain."
+          },
+          "decision_seconds": 1.0144,
+          "action": {
+            "trade": 20,
+            "feed": 100,
+            "regular": 60,
+            "resilient": 60
+          },
+          "error": null,
+          "model_version": "gemini-3.5-flash-lite",
+          "usage": {
+            "input_tokens": 622,
+            "output_tokens": 40,
+            "thinking_tokens": null,
+            "total_tokens": 662,
+            "cached_input_tokens": null
+          },
+          "transition": {
+            "accepted": true,
+            "reason": "accepted",
+            "event": {
+              "year": 1,
+              "drought": true,
+              "harvest": 1500,
+              "starved": 0,
+              "trade": 20,
+              "feed": 100,
+              "regular": 60,
+              "resilient": 60
+            },
+            "outcome": {
+              "terminal": false,
+              "reason": "ongoing",
+              "score": 4840,
+              "success": false
+            }
+          }
+        },
+        {
+          "observation": {
+            "year": 2,
+            "years": 3,
+            "population": 100,
+            "land": 120,
+            "grain": 1640,
+            "drought_percent": 25,
+            "land_price": 22,
+            "previous_year": {
+              "year": 1,
+              "drought": true,
+              "harvest": 1500,
+              "starved": 0,
+              "trade": 20,
+              "feed": 100,
+              "regular": 60,
+              "resilient": 60
+            },
+            "total_starved": 0,
+            "invalid_actions": 0,
+            "constants": {
+              "food_per_person": 20,
+              "acres_per_person": 2,
+              "max_trade": 20,
+              "regular": {
+                "seed_cost": 2,
+                "normal_yield": 30,
+                "drought_yield": 5
+              },
+              "resilient": {
+                "seed_cost": 3,
+                "normal_yield": 25,
+                "drought_yield": 20
+              }
+            }
+          },
+          "legal_actions": {
+            "type": "object",
+            "properties": {
+              "trade": {
+                "type": "integer",
+                "minimum": -20,
+                "maximum": 20
+              },
+              "feed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "regular": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 140
+              },
+              "resilient": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 140
+              }
+            },
+            "required": [
+              "trade",
+              "feed",
+              "regular",
+              "resilient"
+            ],
+            "additionalProperties": false,
+            "description": "Trade is signed acres (positive buys, negative sells). Feed is people. Total planting must fit land after trade and current labor. Total grain cost of trade, feed and seed cannot exceed stored grain."
+          },
+          "decision_seconds": 0.9552,
+          "action": {
+            "trade": 20,
+            "feed": 100,
+            "regular": 70,
+            "resilient": 70
+          },
+          "error": null,
+          "model_version": "gemini-3.5-flash-lite",
+          "usage": {
+            "input_tokens": 678,
+            "output_tokens": 40,
+            "thinking_tokens": null,
+            "total_tokens": 718,
+            "cached_input_tokens": null
+          },
+          "transition": {
+            "accepted": false,
+            "reason": "This plan needs 2790 grain, but only 1640 is stored.",
+            "event": null,
+            "outcome": {
+              "terminal": false,
+              "reason": "ongoing",
+              "score": 4840,
+              "success": false
+            }
+          }
+        }
+      ],
+      "split": "development",
+      "estimated_cost_usd": 0.00059
+    },
+    {
+      "case": "dry",
+      "seed": 201,
+      "policy": "baseline",
+      "outcome": {
+        "terminal": true,
+        "reason": "secured",
+        "score": 7350,
+        "success": true
+      },
+      "game_outcome": {
+        "terminal": true,
+        "reason": "secured",
+        "score": 7350,
+        "success": true
+      },
+      "steps": 3,
+      "step_attempts": 3,
+      "model_calls": 0,
+      "illegal_actions": 0,
+      "seconds": 0.0084,
+      "usage": {
+        "attempts_with_usage": 0,
+        "attempts_without_usage": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "thinking_tokens": 0,
+        "total_tokens": 0,
+        "cached_input_tokens": 0
+      },
+      "turns": [
+        {
+          "observation": {
+            "year": 1,
+            "years": 3,
+            "population": 100,
+            "land": 110,
+            "grain": 3300,
+            "drought_percent": 65,
+            "land_price": 18,
+            "previous_year": null,
+            "total_starved": 0,
+            "invalid_actions": 0,
+            "constants": {
+              "food_per_person": 20,
+              "acres_per_person": 2,
+              "max_trade": 20,
+              "regular": {
+                "seed_cost": 2,
+                "normal_yield": 30,
+                "drought_yield": 5
+              },
+              "resilient": {
+                "seed_cost": 3,
+                "normal_yield": 25,
+                "drought_yield": 20
+              }
+            }
+          },
+          "legal_actions": {
+            "type": "object",
+            "properties": {
+              "trade": {
+                "type": "integer",
+                "minimum": -20,
+                "maximum": 20
+              },
+              "feed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "regular": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 130
+              },
+              "resilient": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 130
+              }
+            },
+            "required": [
+              "trade",
+              "feed",
+              "regular",
+              "resilient"
+            ],
+            "additionalProperties": false,
+            "description": "Trade is signed acres (positive buys, negative sells). Feed is people. Total planting must fit land after trade and current labor. Total grain cost of trade, feed and seed cannot exceed stored grain."
+          },
+          "decision_seconds": 0.0024,
+          "action": {
+            "trade": 20,
+            "feed": 100,
+            "regular": 0,
+            "resilient": 130
+          },
+          "error": null,
+          "model_version": null,
+          "usage": null,
+          "transition": {
+            "accepted": true,
+            "reason": "accepted",
+            "event": {
+              "year": 1,
+              "drought": true,
+              "harvest": 2600,
+              "starved": 0,
+              "trade": 20,
+              "feed": 100,
+              "regular": 0,
+              "resilient": 130
+            },
+            "outcome": {
+              "terminal": false,
+              "reason": "ongoing",
+              "score": 6450,
+              "success": false
+            }
+          }
+        },
+        {
+          "observation": {
+            "year": 2,
+            "years": 3,
+            "population": 100,
+            "land": 130,
+            "grain": 3150,
+            "drought_percent": 75,
+            "land_price": 22,
+            "previous_year": {
+              "year": 1,
+              "drought": true,
+              "harvest": 2600,
+              "starved": 0,
+              "trade": 20,
+              "feed": 100,
+              "regular": 0,
+              "resilient": 130
+            },
+            "total_starved": 0,
+            "invalid_actions": 0,
+            "constants": {
+              "food_per_person": 20,
+              "acres_per_person": 2,
+              "max_trade": 20,
+              "regular": {
+                "seed_cost": 2,
+                "normal_yield": 30,
+                "drought_yield": 5
+              },
+              "resilient": {
+                "seed_cost": 3,
+                "normal_yield": 25,
+                "drought_yield": 20
+              }
+            }
+          },
+          "legal_actions": {
+            "type": "object",
+            "properties": {
+              "trade": {
+                "type": "integer",
+                "minimum": -20,
+                "maximum": 20
+              },
+              "feed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "regular": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 150
+              },
+              "resilient": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 150
+              }
+            },
+            "required": [
+              "trade",
+              "feed",
+              "regular",
+              "resilient"
+            ],
+            "additionalProperties": false,
+            "description": "Trade is signed acres (positive buys, negative sells). Feed is people. Total planting must fit land after trade and current labor. Total grain cost of trade, feed and seed cannot exceed stored grain."
+          },
+          "decision_seconds": 0.0027,
+          "action": {
+            "trade": 20,
+            "feed": 100,
+            "regular": 0,
+            "resilient": 150
+          },
+          "error": null,
+          "model_version": null,
+          "usage": null,
+          "transition": {
+            "accepted": true,
+            "reason": "accepted",
+            "event": {
+              "year": 2,
+              "drought": true,
+              "harvest": 3000,
+              "starved": 0,
+              "trade": 20,
+              "feed": 100,
+              "regular": 0,
+              "resilient": 150
+            },
+            "outcome": {
+              "terminal": false,
+              "reason": "ongoing",
+              "score": 6760,
+              "success": false
+            }
+          }
+        },
+        {
+          "observation": {
+            "year": 3,
+            "years": 3,
+            "population": 100,
+            "land": 150,
+            "grain": 3260,
+            "drought_percent": 70,
+            "land_price": 25,
+            "previous_year": {
+              "year": 2,
+              "drought": true,
+              "harvest": 3000,
+              "starved": 0,
+              "trade": 20,
+              "feed": 100,
+              "regular": 0,
+              "resilient": 150
+            },
+            "total_starved": 0,
+            "invalid_actions": 0,
+            "constants": {
+              "food_per_person": 20,
+              "acres_per_person": 2,
+              "max_trade": 20,
+              "regular": {
+                "seed_cost": 2,
+                "normal_yield": 30,
+                "drought_yield": 5
+              },
+              "resilient": {
+                "seed_cost": 3,
+                "normal_yield": 25,
+                "drought_yield": 20
+              }
+            }
+          },
+          "legal_actions": {
+            "type": "object",
+            "properties": {
+              "trade": {
+                "type": "integer",
+                "minimum": -20,
+                "maximum": 20
+              },
+              "feed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "regular": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 170
+              },
+              "resilient": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 170
+              }
+            },
+            "required": [
+              "trade",
+              "feed",
+              "regular",
+              "resilient"
+            ],
+            "additionalProperties": false,
+            "description": "Trade is signed acres (positive buys, negative sells). Feed is people. Total planting must fit land after trade and current labor. Total grain cost of trade, feed and seed cannot exceed stored grain."
+          },
+          "decision_seconds": 0.0031,
+          "action": {
+            "trade": 20,
+            "feed": 100,
+            "regular": 0,
+            "resilient": 170
+          },
+          "error": null,
+          "model_version": null,
+          "usage": null,
+          "transition": {
+            "accepted": true,
+            "reason": "accepted",
+            "event": {
+              "year": 3,
+              "drought": true,
+              "harvest": 3400,
+              "starved": 0,
+              "trade": 20,
+              "feed": 100,
+              "regular": 0,
+              "resilient": 170
+            },
+            "outcome": {
+              "terminal": true,
+              "reason": "secured",
+              "score": 7350,
+              "success": true
+            }
+          }
+        }
+      ],
+      "split": "held-out",
+      "estimated_cost_usd": 0.0
+    },
+    {
+      "case": "dry",
+      "seed": 201,
+      "policy": "vertex",
+      "outcome": {
+        "terminal": true,
+        "reason": "illegal_action",
+        "score": 4565,
+        "success": false
+      },
+      "game_outcome": {
+        "terminal": false,
+        "reason": "ongoing",
+        "score": 4565,
+        "success": false
+      },
+      "steps": 1,
+      "step_attempts": 2,
+      "model_calls": 2,
+      "illegal_actions": 1,
+      "seconds": 2.0072,
+      "usage": {
+        "attempts_with_usage": 2,
+        "attempts_without_usage": 0,
+        "input_tokens": 1297,
+        "output_tokens": 56,
+        "thinking_tokens": null,
+        "total_tokens": 1353,
+        "cached_input_tokens": null
+      },
+      "turns": [
+        {
+          "observation": {
+            "year": 1,
+            "years": 3,
+            "population": 100,
+            "land": 110,
+            "grain": 3300,
+            "drought_percent": 65,
+            "land_price": 18,
+            "previous_year": null,
+            "total_starved": 0,
+            "invalid_actions": 0,
+            "constants": {
+              "food_per_person": 20,
+              "acres_per_person": 2,
+              "max_trade": 20,
+              "regular": {
+                "seed_cost": 2,
+                "normal_yield": 30,
+                "drought_yield": 5
+              },
+              "resilient": {
+                "seed_cost": 3,
+                "normal_yield": 25,
+                "drought_yield": 20
+              }
+            }
+          },
+          "legal_actions": {
+            "type": "object",
+            "properties": {
+              "trade": {
+                "type": "integer",
+                "minimum": -20,
+                "maximum": 20
+              },
+              "feed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "regular": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 130
+              },
+              "resilient": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 130
+              }
+            },
+            "required": [
+              "trade",
+              "feed",
+              "regular",
+              "resilient"
+            ],
+            "additionalProperties": false,
+            "description": "Trade is signed acres (positive buys, negative sells). Feed is people. Total planting must fit land after trade and current labor. Total grain cost of trade, feed and seed cannot exceed stored grain."
+          },
+          "decision_seconds": 0.9501,
+          "action": {
+            "trade": 0,
+            "feed": 100,
+            "regular": 55,
+            "resilient": 0
+          },
+          "error": null,
+          "model_version": "gemini-3.5-flash-lite",
+          "usage": {
+            "input_tokens": 622,
+            "output_tokens": 28,
+            "thinking_tokens": null,
+            "total_tokens": 650,
+            "cached_input_tokens": null
+          },
+          "transition": {
+            "accepted": true,
+            "reason": "accepted",
+            "event": {
+              "year": 1,
+              "drought": true,
+              "harvest": 275,
+              "starved": 0,
+              "trade": 0,
+              "feed": 100,
+              "regular": 55,
+              "resilient": 0
+            },
+            "outcome": {
+              "terminal": false,
+              "reason": "ongoing",
+              "score": 4565,
+              "success": false
+            }
+          }
+        },
+        {
+          "observation": {
+            "year": 2,
+            "years": 3,
+            "population": 100,
+            "land": 110,
+            "grain": 1465,
+            "drought_percent": 75,
+            "land_price": 22,
+            "previous_year": {
+              "year": 1,
+              "drought": true,
+              "harvest": 275,
+              "starved": 0,
+              "trade": 0,
+              "feed": 100,
+              "regular": 55,
+              "resilient": 0
+            },
+            "total_starved": 0,
+            "invalid_actions": 0,
+            "constants": {
+              "food_per_person": 20,
+              "acres_per_person": 2,
+              "max_trade": 20,
+              "regular": {
+                "seed_cost": 2,
+                "normal_yield": 30,
+                "drought_yield": 5
+              },
+              "resilient": {
+                "seed_cost": 3,
+                "normal_yield": 25,
+                "drought_yield": 20
+              }
+            }
+          },
+          "legal_actions": {
+            "type": "object",
+            "properties": {
+              "trade": {
+                "type": "integer",
+                "minimum": -20,
+                "maximum": 20
+              },
+              "feed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "regular": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 130
+              },
+              "resilient": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 130
+              }
+            },
+            "required": [
+              "trade",
+              "feed",
+              "regular",
+              "resilient"
+            ],
+            "additionalProperties": false,
+            "description": "Trade is signed acres (positive buys, negative sells). Feed is people. Total planting must fit land after trade and current labor. Total grain cost of trade, feed and seed cannot exceed stored grain."
+          },
+          "decision_seconds": 1.0568,
+          "action": {
+            "trade": 0,
+            "feed": 100,
+            "regular": 55,
+            "resilient": 0
+          },
+          "error": null,
+          "model_version": "gemini-3.5-flash-lite",
+          "usage": {
+            "input_tokens": 675,
+            "output_tokens": 28,
+            "thinking_tokens": null,
+            "total_tokens": 703,
+            "cached_input_tokens": null
+          },
+          "transition": {
+            "accepted": false,
+            "reason": "This plan needs 2110 grain, but only 1465 is stored.",
+            "event": null,
+            "outcome": {
+              "terminal": false,
+              "reason": "ongoing",
+              "score": 4565,
+              "success": false
+            }
+          }
+        }
+      ],
+      "split": "held-out",
+      "estimated_cost_usd": 0.0005291
+    },
+    {
+      "case": "dry",
+      "seed": 202,
+      "policy": "baseline",
+      "outcome": {
+        "terminal": true,
+        "reason": "secured",
+        "score": 8000,
+        "success": true
+      },
+      "game_outcome": {
+        "terminal": true,
+        "reason": "secured",
+        "score": 8000,
+        "success": true
+      },
+      "steps": 3,
+      "step_attempts": 3,
+      "model_calls": 0,
+      "illegal_actions": 0,
+      "seconds": 0.0086,
+      "usage": {
+        "attempts_with_usage": 0,
+        "attempts_without_usage": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "thinking_tokens": 0,
+        "total_tokens": 0,
+        "cached_input_tokens": 0
+      },
+      "turns": [
+        {
+          "observation": {
+            "year": 1,
+            "years": 3,
+            "population": 100,
+            "land": 110,
+            "grain": 3300,
+            "drought_percent": 65,
+            "land_price": 18,
+            "previous_year": null,
+            "total_starved": 0,
+            "invalid_actions": 0,
+            "constants": {
+              "food_per_person": 20,
+              "acres_per_person": 2,
+              "max_trade": 20,
+              "regular": {
+                "seed_cost": 2,
+                "normal_yield": 30,
+                "drought_yield": 5
+              },
+              "resilient": {
+                "seed_cost": 3,
+                "normal_yield": 25,
+                "drought_yield": 20
+              }
+            }
+          },
+          "legal_actions": {
+            "type": "object",
+            "properties": {
+              "trade": {
+                "type": "integer",
+                "minimum": -20,
+                "maximum": 20
+              },
+              "feed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "regular": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 130
+              },
+              "resilient": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 130
+              }
+            },
+            "required": [
+              "trade",
+              "feed",
+              "regular",
+              "resilient"
+            ],
+            "additionalProperties": false,
+            "description": "Trade is signed acres (positive buys, negative sells). Feed is people. Total planting must fit land after trade and current labor. Total grain cost of trade, feed and seed cannot exceed stored grain."
+          },
+          "decision_seconds": 0.0026,
+          "action": {
+            "trade": 20,
+            "feed": 100,
+            "regular": 0,
+            "resilient": 130
+          },
+          "error": null,
+          "model_version": null,
+          "usage": null,
+          "transition": {
+            "accepted": true,
+            "reason": "accepted",
+            "event": {
+              "year": 1,
+              "drought": false,
+              "harvest": 3250,
+              "starved": 0,
+              "trade": 20,
+              "feed": 100,
+              "regular": 0,
+              "resilient": 130
+            },
+            "outcome": {
+              "terminal": false,
+              "reason": "ongoing",
+              "score": 7100,
+              "success": false
+            }
+          }
+        },
+        {
+          "observation": {
+            "year": 2,
+            "years": 3,
+            "population": 100,
+            "land": 130,
+            "grain": 3800,
+            "drought_percent": 75,
+            "land_price": 22,
+            "previous_year": {
+              "year": 1,
+              "drought": false,
+              "harvest": 3250,
+              "starved": 0,
+              "trade": 20,
+              "feed": 100,
+              "regular": 0,
+              "resilient": 130
+            },
+            "total_starved": 0,
+            "invalid_actions": 0,
+            "constants": {
+              "food_per_person": 20,
+              "acres_per_person": 2,
+              "max_trade": 20,
+              "regular": {
+                "seed_cost": 2,
+                "normal_yield": 30,
+                "drought_yield": 5
+              },
+              "resilient": {
+                "seed_cost": 3,
+                "normal_yield": 25,
+                "drought_yield": 20
+              }
+            }
+          },
+          "legal_actions": {
+            "type": "object",
+            "properties": {
+              "trade": {
+                "type": "integer",
+                "minimum": -20,
+                "maximum": 20
+              },
+              "feed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "regular": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 150
+              },
+              "resilient": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 150
+              }
+            },
+            "required": [
+              "trade",
+              "feed",
+              "regular",
+              "resilient"
+            ],
+            "additionalProperties": false,
+            "description": "Trade is signed acres (positive buys, negative sells). Feed is people. Total planting must fit land after trade and current labor. Total grain cost of trade, feed and seed cannot exceed stored grain."
+          },
+          "decision_seconds": 0.0027,
+          "action": {
+            "trade": 20,
+            "feed": 100,
+            "regular": 0,
+            "resilient": 150
+          },
+          "error": null,
+          "model_version": null,
+          "usage": null,
+          "transition": {
+            "accepted": true,
+            "reason": "accepted",
+            "event": {
+              "year": 2,
+              "drought": true,
+              "harvest": 3000,
+              "starved": 0,
+              "trade": 20,
+              "feed": 100,
+              "regular": 0,
+              "resilient": 150
+            },
+            "outcome": {
+              "terminal": false,
+              "reason": "ongoing",
+              "score": 7410,
+              "success": false
+            }
+          }
+        },
+        {
+          "observation": {
+            "year": 3,
+            "years": 3,
+            "population": 100,
+            "land": 150,
+            "grain": 3910,
+            "drought_percent": 70,
+            "land_price": 25,
+            "previous_year": {
+              "year": 2,
+              "drought": true,
+              "harvest": 3000,
+              "starved": 0,
+              "trade": 20,
+              "feed": 100,
+              "regular": 0,
+              "resilient": 150
+            },
+            "total_starved": 0,
+            "invalid_actions": 0,
+            "constants": {
+              "food_per_person": 20,
+              "acres_per_person": 2,
+              "max_trade": 20,
+              "regular": {
+                "seed_cost": 2,
+                "normal_yield": 30,
+                "drought_yield": 5
+              },
+              "resilient": {
+                "seed_cost": 3,
+                "normal_yield": 25,
+                "drought_yield": 20
+              }
+            }
+          },
+          "legal_actions": {
+            "type": "object",
+            "properties": {
+              "trade": {
+                "type": "integer",
+                "minimum": -20,
+                "maximum": 20
+              },
+              "feed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "regular": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 170
+              },
+              "resilient": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 170
+              }
+            },
+            "required": [
+              "trade",
+              "feed",
+              "regular",
+              "resilient"
+            ],
+            "additionalProperties": false,
+            "description": "Trade is signed acres (positive buys, negative sells). Feed is people. Total planting must fit land after trade and current labor. Total grain cost of trade, feed and seed cannot exceed stored grain."
+          },
+          "decision_seconds": 0.0031,
+          "action": {
+            "trade": 20,
+            "feed": 100,
+            "regular": 0,
+            "resilient": 170
+          },
+          "error": null,
+          "model_version": null,
+          "usage": null,
+          "transition": {
+            "accepted": true,
+            "reason": "accepted",
+            "event": {
+              "year": 3,
+              "drought": true,
+              "harvest": 3400,
+              "starved": 0,
+              "trade": 20,
+              "feed": 100,
+              "regular": 0,
+              "resilient": 170
+            },
+            "outcome": {
+              "terminal": true,
+              "reason": "secured",
+              "score": 8000,
+              "success": true
+            }
+          }
+        }
+      ],
+      "split": "held-out",
+      "estimated_cost_usd": 0.0
+    },
+    {
+      "case": "dry",
+      "seed": 202,
+      "policy": "vertex",
+      "outcome": {
+        "terminal": true,
+        "reason": "illegal_action",
+        "score": 4105,
+        "success": false
+      },
+      "game_outcome": {
+        "terminal": false,
+        "reason": "ongoing",
+        "score": 4105,
+        "success": false
+      },
+      "steps": 2,
+      "step_attempts": 3,
+      "model_calls": 3,
+      "illegal_actions": 1,
+      "seconds": 3.0164,
+      "usage": {
+        "attempts_with_usage": 3,
+        "attempts_without_usage": 0,
+        "input_tokens": 1973,
+        "output_tokens": 94,
+        "thinking_tokens": null,
+        "total_tokens": 2067,
+        "cached_input_tokens": null
+      },
+      "turns": [
+        {
+          "observation": {
+            "year": 1,
+            "years": 3,
+            "population": 100,
+            "land": 110,
+            "grain": 3300,
+            "drought_percent": 65,
+            "land_price": 18,
+            "previous_year": null,
+            "total_starved": 0,
+            "invalid_actions": 0,
+            "constants": {
+              "food_per_person": 20,
+              "acres_per_person": 2,
+              "max_trade": 20,
+              "regular": {
+                "seed_cost": 2,
+                "normal_yield": 30,
+                "drought_yield": 5
+              },
+              "resilient": {
+                "seed_cost": 3,
+                "normal_yield": 25,
+                "drought_yield": 20
+              }
+            }
+          },
+          "legal_actions": {
+            "type": "object",
+            "properties": {
+              "trade": {
+                "type": "integer",
+                "minimum": -20,
+                "maximum": 20
+              },
+              "feed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "regular": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 130
+              },
+              "resilient": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 130
+              }
+            },
+            "required": [
+              "trade",
+              "feed",
+              "regular",
+              "resilient"
+            ],
+            "additionalProperties": false,
+            "description": "Trade is signed acres (positive buys, negative sells). Feed is people. Total planting must fit land after trade and current labor. Total grain cost of trade, feed and seed cannot exceed stored grain."
+          },
+          "decision_seconds": 0.9133,
+          "action": {
+            "trade": 0,
+            "feed": 100,
+            "regular": 55,
+            "resilient": 0
+          },
+          "error": null,
+          "model_version": "gemini-3.5-flash-lite",
+          "usage": {
+            "input_tokens": 622,
+            "output_tokens": 28,
+            "thinking_tokens": null,
+            "total_tokens": 650,
+            "cached_input_tokens": null
+          },
+          "transition": {
+            "accepted": true,
+            "reason": "accepted",
+            "event": {
+              "year": 1,
+              "drought": false,
+              "harvest": 1650,
+              "starved": 0,
+              "trade": 0,
+              "feed": 100,
+              "regular": 55,
+              "resilient": 0
+            },
+            "outcome": {
+              "terminal": false,
+              "reason": "ongoing",
+              "score": 5940,
+              "success": false
+            }
+          }
+        },
+        {
+          "observation": {
+            "year": 2,
+            "years": 3,
+            "population": 100,
+            "land": 110,
+            "grain": 2840,
+            "drought_percent": 75,
+            "land_price": 22,
+            "previous_year": {
+              "year": 1,
+              "drought": false,
+              "harvest": 1650,
+              "starved": 0,
+              "trade": 0,
+              "feed": 100,
+              "regular": 55,
+              "resilient": 0
+            },
+            "total_starved": 0,
+            "invalid_actions": 0,
+            "constants": {
+              "food_per_person": 20,
+              "acres_per_person": 2,
+              "max_trade": 20,
+              "regular": {
+                "seed_cost": 2,
+                "normal_yield": 30,
+                "drought_yield": 5
+              },
+              "resilient": {
+                "seed_cost": 3,
+                "normal_yield": 25,
+                "drought_yield": 20
+              }
+            }
+          },
+          "legal_actions": {
+            "type": "object",
+            "properties": {
+              "trade": {
+                "type": "integer",
+                "minimum": -20,
+                "maximum": 20
+              },
+              "feed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "regular": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 130
+              },
+              "resilient": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 130
+              }
+            },
+            "required": [
+              "trade",
+              "feed",
+              "regular",
+              "resilient"
+            ],
+            "additionalProperties": false,
+            "description": "Trade is signed acres (positive buys, negative sells). Feed is people. Total planting must fit land after trade and current labor. Total grain cost of trade, feed and seed cannot exceed stored grain."
+          },
+          "decision_seconds": 0.9774,
+          "action": {
+            "trade": 0,
+            "feed": 100,
+            "regular": 55,
+            "resilient": 0
+          },
+          "error": null,
+          "model_version": "gemini-3.5-flash-lite",
+          "usage": {
+            "input_tokens": 676,
+            "output_tokens": 38,
+            "thinking_tokens": null,
+            "total_tokens": 714,
+            "cached_input_tokens": null
+          },
+          "transition": {
+            "accepted": true,
+            "reason": "accepted",
+            "event": {
+              "year": 2,
+              "drought": true,
+              "harvest": 275,
+              "starved": 0,
+              "trade": 0,
+              "feed": 100,
+              "regular": 55,
+              "resilient": 0
+            },
+            "outcome": {
+              "terminal": false,
+              "reason": "ongoing",
+              "score": 4105,
+              "success": false
+            }
+          }
+        },
+        {
+          "observation": {
+            "year": 3,
+            "years": 3,
+            "population": 100,
+            "land": 110,
+            "grain": 1005,
+            "drought_percent": 70,
+            "land_price": 25,
+            "previous_year": {
+              "year": 2,
+              "drought": true,
+              "harvest": 275,
+              "starved": 0,
+              "trade": 0,
+              "feed": 100,
+              "regular": 55,
+              "resilient": 0
+            },
+            "total_starved": 0,
+            "invalid_actions": 0,
+            "constants": {
+              "food_per_person": 20,
+              "acres_per_person": 2,
+              "max_trade": 20,
+              "regular": {
+                "seed_cost": 2,
+                "normal_yield": 30,
+                "drought_yield": 5
+              },
+              "resilient": {
+                "seed_cost": 3,
+                "normal_yield": 25,
+                "drought_yield": 20
+              }
+            }
+          },
+          "legal_actions": {
+            "type": "object",
+            "properties": {
+              "trade": {
+                "type": "integer",
+                "minimum": -20,
+                "maximum": 20
+              },
+              "feed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "regular": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 130
+              },
+              "resilient": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 130
+              }
+            },
+            "required": [
+              "trade",
+              "feed",
+              "regular",
+              "resilient"
+            ],
+            "additionalProperties": false,
+            "description": "Trade is signed acres (positive buys, negative sells). Feed is people. Total planting must fit land after trade and current labor. Total grain cost of trade, feed and seed cannot exceed stored grain."
+          },
+          "decision_seconds": 1.1252,
+          "action": {
+            "trade": 0,
+            "feed": 100,
+            "regular": 55,
+            "resilient": 0
+          },
+          "error": null,
+          "model_version": "gemini-3.5-flash-lite",
+          "usage": {
+            "input_tokens": 675,
+            "output_tokens": 28,
+            "thinking_tokens": null,
+            "total_tokens": 703,
+            "cached_input_tokens": null
+          },
+          "transition": {
+            "accepted": false,
+            "reason": "This plan needs 2110 grain, but only 1005 is stored.",
+            "event": null,
+            "outcome": {
+              "terminal": false,
+              "reason": "ongoing",
+              "score": 4105,
+              "success": false
+            }
+          }
+        }
+      ],
+      "split": "held-out",
+      "estimated_cost_usd": 0.0008269
+    },
+    {
+      "case": "lean",
+      "seed": 301,
+      "policy": "baseline",
+      "outcome": {
+        "terminal": true,
+        "reason": "secured",
+        "score": 6147,
+        "success": true
+      },
+      "game_outcome": {
+        "terminal": true,
+        "reason": "secured",
+        "score": 6147,
+        "success": true
+      },
+      "steps": 3,
+      "step_attempts": 3,
+      "model_calls": 0,
+      "illegal_actions": 0,
+      "seconds": 0.0052,
+      "usage": {
+        "attempts_with_usage": 0,
+        "attempts_without_usage": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "thinking_tokens": 0,
+        "total_tokens": 0,
+        "cached_input_tokens": 0
+      },
+      "turns": [
+        {
+          "observation": {
+            "year": 1,
+            "years": 3,
+            "population": 100,
+            "land": 120,
+            "grain": 2180,
+            "drought_percent": 40,
+            "land_price": 18,
+            "previous_year": null,
+            "total_starved": 0,
+            "invalid_actions": 0,
+            "constants": {
+              "food_per_person": 20,
+              "acres_per_person": 2,
+              "max_trade": 20,
+              "regular": {
+                "seed_cost": 2,
+                "normal_yield": 30,
+                "drought_yield": 5
+              },
+              "resilient": {
+                "seed_cost": 3,
+                "normal_yield": 25,
+                "drought_yield": 20
+              }
+            }
+          },
+          "legal_actions": {
+            "type": "object",
+            "properties": {
+              "trade": {
+                "type": "integer",
+                "minimum": -20,
+                "maximum": 20
+              },
+              "feed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "regular": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 140
+              },
+              "resilient": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 140
+              }
+            },
+            "required": [
+              "trade",
+              "feed",
+              "regular",
+              "resilient"
+            ],
+            "additionalProperties": false,
+            "description": "Trade is signed acres (positive buys, negative sells). Feed is people. Total planting must fit land after trade and current labor. Total grain cost of trade, feed and seed cannot exceed stored grain."
+          },
+          "decision_seconds": 0.0014,
+          "action": {
+            "trade": -9,
+            "feed": 100,
+            "regular": 0,
+            "resilient": 111
+          },
+          "error": null,
+          "model_version": null,
+          "usage": null,
+          "transition": {
+            "accepted": true,
+            "reason": "accepted",
+            "event": {
+              "year": 1,
+              "drought": true,
+              "harvest": 2220,
+              "starved": 0,
+              "trade": -9,
+              "feed": 100,
+              "regular": 0,
+              "resilient": 111
+            },
+            "outcome": {
+              "terminal": false,
+              "reason": "ongoing",
+              "score": 5339,
+              "success": false
+            }
+          }
+        },
+        {
+          "observation": {
+            "year": 2,
+            "years": 3,
+            "population": 100,
+            "land": 111,
+            "grain": 2229,
+            "drought_percent": 55,
+            "land_price": 22,
+            "previous_year": {
+              "year": 1,
+              "drought": true,
+              "harvest": 2220,
+              "starved": 0,
+              "trade": -9,
+              "feed": 100,
+              "regular": 0,
+              "resilient": 111
+            },
+            "total_starved": 0,
+            "invalid_actions": 0,
+            "constants": {
+              "food_per_person": 20,
+              "acres_per_person": 2,
+              "max_trade": 20,
+              "regular": {
+                "seed_cost": 2,
+                "normal_yield": 30,
+                "drought_yield": 5
+              },
+              "resilient": {
+                "seed_cost": 3,
+                "normal_yield": 25,
+                "drought_yield": 20
+              }
+            }
+          },
+          "legal_actions": {
+            "type": "object",
+            "properties": {
+              "trade": {
+                "type": "integer",
+                "minimum": -20,
+                "maximum": 20
+              },
+              "feed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "regular": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 131
+              },
+              "resilient": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 131
+              }
+            },
+            "required": [
+              "trade",
+              "feed",
+              "regular",
+              "resilient"
+            ],
+            "additionalProperties": false,
+            "description": "Trade is signed acres (positive buys, negative sells). Feed is people. Total planting must fit land after trade and current labor. Total grain cost of trade, feed and seed cannot exceed stored grain."
+          },
+          "decision_seconds": 0.0013,
+          "action": {
+            "trade": -5,
+            "feed": 100,
+            "regular": 0,
+            "resilient": 106
+          },
+          "error": null,
+          "model_version": null,
+          "usage": null,
+          "transition": {
+            "accepted": true,
+            "reason": "accepted",
+            "event": {
+              "year": 2,
+              "drought": false,
+              "harvest": 2650,
+              "starved": 0,
+              "trade": -5,
+              "feed": 100,
+              "regular": 0,
+              "resilient": 106
+            },
+            "outcome": {
+              "terminal": false,
+              "reason": "ongoing",
+              "score": 5731,
+              "success": false
+            }
+          }
+        },
+        {
+          "observation": {
+            "year": 3,
+            "years": 3,
+            "population": 100,
+            "land": 106,
+            "grain": 2671,
+            "drought_percent": 45,
+            "land_price": 25,
+            "previous_year": {
+              "year": 2,
+              "drought": false,
+              "harvest": 2650,
+              "starved": 0,
+              "trade": -5,
+              "feed": 100,
+              "regular": 0,
+              "resilient": 106
+            },
+            "total_starved": 0,
+            "invalid_actions": 0,
+            "constants": {
+              "food_per_person": 20,
+              "acres_per_person": 2,
+              "max_trade": 20,
+              "regular": {
+                "seed_cost": 2,
+                "normal_yield": 30,
+                "drought_yield": 5
+              },
+              "resilient": {
+                "seed_cost": 3,
+                "normal_yield": 25,
+                "drought_yield": 20
+              }
+            }
+          },
+          "legal_actions": {
+            "type": "object",
+            "properties": {
+              "trade": {
+                "type": "integer",
+                "minimum": -20,
+                "maximum": 20
+              },
+              "feed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "regular": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 126
+              },
+              "resilient": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 126
+              }
+            },
+            "required": [
+              "trade",
+              "feed",
+              "regular",
+              "resilient"
+            ],
+            "additionalProperties": false,
+            "description": "Trade is signed acres (positive buys, negative sells). Feed is people. Total planting must fit land after trade and current labor. Total grain cost of trade, feed and seed cannot exceed stored grain."
+          },
+          "decision_seconds": 0.0023,
+          "action": {
+            "trade": 12,
+            "feed": 100,
+            "regular": 0,
+            "resilient": 118
+          },
+          "error": null,
+          "model_version": null,
+          "usage": null,
+          "transition": {
+            "accepted": true,
+            "reason": "accepted",
+            "event": {
+              "year": 3,
+              "drought": false,
+              "harvest": 2950,
+              "starved": 0,
+              "trade": 12,
+              "feed": 100,
+              "regular": 0,
+              "resilient": 118
+            },
+            "outcome": {
+              "terminal": true,
+              "reason": "secured",
+              "score": 6147,
+              "success": true
+            }
+          }
+        }
+      ],
+      "split": "held-out",
+      "estimated_cost_usd": 0.0
+    },
+    {
+      "case": "lean",
+      "seed": 301,
+      "policy": "vertex",
+      "outcome": {
+        "terminal": true,
+        "reason": "illegal_action",
+        "score": 5380,
+        "success": false
+      },
+      "game_outcome": {
+        "terminal": false,
+        "reason": "ongoing",
+        "score": 5380,
+        "success": false
+      },
+      "steps": 0,
+      "step_attempts": 1,
+      "model_calls": 1,
+      "illegal_actions": 1,
+      "seconds": 1.3371,
+      "usage": {
+        "attempts_with_usage": 1,
+        "attempts_without_usage": 0,
+        "input_tokens": 622,
+        "output_tokens": 40,
+        "thinking_tokens": null,
+        "total_tokens": 662,
+        "cached_input_tokens": null
+      },
+      "turns": [
+        {
+          "observation": {
+            "year": 1,
+            "years": 3,
+            "population": 100,
+            "land": 120,
+            "grain": 2180,
+            "drought_percent": 40,
+            "land_price": 18,
+            "previous_year": null,
+            "total_starved": 0,
+            "invalid_actions": 0,
+            "constants": {
+              "food_per_person": 20,
+              "acres_per_person": 2,
+              "max_trade": 20,
+              "regular": {
+                "seed_cost": 2,
+                "normal_yield": 30,
+                "drought_yield": 5
+              },
+              "resilient": {
+                "seed_cost": 3,
+                "normal_yield": 25,
+                "drought_yield": 20
+              }
+            }
+          },
+          "legal_actions": {
+            "type": "object",
+            "properties": {
+              "trade": {
+                "type": "integer",
+                "minimum": -20,
+                "maximum": 20
+              },
+              "feed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "regular": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 140
+              },
+              "resilient": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 140
+              }
+            },
+            "required": [
+              "trade",
+              "feed",
+              "regular",
+              "resilient"
+            ],
+            "additionalProperties": false,
+            "description": "Trade is signed acres (positive buys, negative sells). Feed is people. Total planting must fit land after trade and current labor. Total grain cost of trade, feed and seed cannot exceed stored grain."
+          },
+          "decision_seconds": 1.337,
+          "action": {
+            "trade": 20,
+            "feed": 100,
+            "regular": 140,
+            "resilient": 0
+          },
+          "error": null,
+          "model_version": "gemini-3.5-flash-lite",
+          "usage": {
+            "input_tokens": 622,
+            "output_tokens": 40,
+            "thinking_tokens": null,
+            "total_tokens": 662,
+            "cached_input_tokens": null
+          },
+          "transition": {
+            "accepted": false,
+            "reason": "This plan needs 2640 grain, but only 2180 is stored.",
+            "event": null,
+            "outcome": {
+              "terminal": false,
+              "reason": "ongoing",
+              "score": 5380,
+              "success": false
+            }
+          }
+        }
+      ],
+      "split": "held-out",
+      "estimated_cost_usd": 0.0002866
+    },
+    {
+      "case": "lean",
+      "seed": 302,
+      "policy": "baseline",
+      "outcome": {
+        "terminal": true,
+        "reason": "secured",
+        "score": 6751,
+        "success": true
+      },
+      "game_outcome": {
+        "terminal": true,
+        "reason": "secured",
+        "score": 6751,
+        "success": true
+      },
+      "steps": 3,
+      "step_attempts": 3,
+      "model_calls": 0,
+      "illegal_actions": 0,
+      "seconds": 0.0064,
+      "usage": {
+        "attempts_with_usage": 0,
+        "attempts_without_usage": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "thinking_tokens": 0,
+        "total_tokens": 0,
+        "cached_input_tokens": 0
+      },
+      "turns": [
+        {
+          "observation": {
+            "year": 1,
+            "years": 3,
+            "population": 100,
+            "land": 120,
+            "grain": 2180,
+            "drought_percent": 40,
+            "land_price": 18,
+            "previous_year": null,
+            "total_starved": 0,
+            "invalid_actions": 0,
+            "constants": {
+              "food_per_person": 20,
+              "acres_per_person": 2,
+              "max_trade": 20,
+              "regular": {
+                "seed_cost": 2,
+                "normal_yield": 30,
+                "drought_yield": 5
+              },
+              "resilient": {
+                "seed_cost": 3,
+                "normal_yield": 25,
+                "drought_yield": 20
+              }
+            }
+          },
+          "legal_actions": {
+            "type": "object",
+            "properties": {
+              "trade": {
+                "type": "integer",
+                "minimum": -20,
+                "maximum": 20
+              },
+              "feed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "regular": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 140
+              },
+              "resilient": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 140
+              }
+            },
+            "required": [
+              "trade",
+              "feed",
+              "regular",
+              "resilient"
+            ],
+            "additionalProperties": false,
+            "description": "Trade is signed acres (positive buys, negative sells). Feed is people. Total planting must fit land after trade and current labor. Total grain cost of trade, feed and seed cannot exceed stored grain."
+          },
+          "decision_seconds": 0.0016,
+          "action": {
+            "trade": -9,
+            "feed": 100,
+            "regular": 0,
+            "resilient": 111
+          },
+          "error": null,
+          "model_version": null,
+          "usage": null,
+          "transition": {
+            "accepted": true,
+            "reason": "accepted",
+            "event": {
+              "year": 1,
+              "drought": false,
+              "harvest": 2775,
+              "starved": 0,
+              "trade": -9,
+              "feed": 100,
+              "regular": 0,
+              "resilient": 111
+            },
+            "outcome": {
+              "terminal": false,
+              "reason": "ongoing",
+              "score": 5894,
+              "success": false
+            }
+          }
+        },
+        {
+          "observation": {
+            "year": 2,
+            "years": 3,
+            "population": 100,
+            "land": 111,
+            "grain": 2784,
+            "drought_percent": 55,
+            "land_price": 22,
+            "previous_year": {
+              "year": 1,
+              "drought": false,
+              "harvest": 2775,
+              "starved": 0,
+              "trade": -9,
+              "feed": 100,
+              "regular": 0,
+              "resilient": 111
+            },
+            "total_starved": 0,
+            "invalid_actions": 0,
+            "constants": {
+              "food_per_person": 20,
+              "acres_per_person": 2,
+              "max_trade": 20,
+              "regular": {
+                "seed_cost": 2,
+                "normal_yield": 30,
+                "drought_yield": 5
+              },
+              "resilient": {
+                "seed_cost": 3,
+                "normal_yield": 25,
+                "drought_yield": 20
+              }
+            }
+          },
+          "legal_actions": {
+            "type": "object",
+            "properties": {
+              "trade": {
+                "type": "integer",
+                "minimum": -20,
+                "maximum": 20
+              },
+              "feed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "regular": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 131
+              },
+              "resilient": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 131
+              }
+            },
+            "required": [
+              "trade",
+              "feed",
+              "regular",
+              "resilient"
+            ],
+            "additionalProperties": false,
+            "description": "Trade is signed acres (positive buys, negative sells). Feed is people. Total planting must fit land after trade and current labor. Total grain cost of trade, feed and seed cannot exceed stored grain."
+          },
+          "decision_seconds": 0.0023,
+          "action": {
+            "trade": 18,
+            "feed": 100,
+            "regular": 0,
+            "resilient": 129
+          },
+          "error": null,
+          "model_version": null,
+          "usage": null,
+          "transition": {
+            "accepted": true,
+            "reason": "accepted",
+            "event": {
+              "year": 2,
+              "drought": true,
+              "harvest": 2580,
+              "starved": 0,
+              "trade": 18,
+              "feed": 100,
+              "regular": 0,
+              "resilient": 129
+            },
+            "outcome": {
+              "terminal": false,
+              "reason": "ongoing",
+              "score": 5871,
+              "success": false
+            }
+          }
+        },
+        {
+          "observation": {
+            "year": 3,
+            "years": 3,
+            "population": 100,
+            "land": 129,
+            "grain": 2581,
+            "drought_percent": 45,
+            "land_price": 25,
+            "previous_year": {
+              "year": 2,
+              "drought": true,
+              "harvest": 2580,
+              "starved": 0,
+              "trade": 18,
+              "feed": 100,
+              "regular": 0,
+              "resilient": 129
+            },
+            "total_starved": 0,
+            "invalid_actions": 0,
+            "constants": {
+              "food_per_person": 20,
+              "acres_per_person": 2,
+              "max_trade": 20,
+              "regular": {
+                "seed_cost": 2,
+                "normal_yield": 30,
+                "drought_yield": 5
+              },
+              "resilient": {
+                "seed_cost": 3,
+                "normal_yield": 25,
+                "drought_yield": 20
+              }
+            }
+          },
+          "legal_actions": {
+            "type": "object",
+            "properties": {
+              "trade": {
+                "type": "integer",
+                "minimum": -20,
+                "maximum": 20
+              },
+              "feed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "regular": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 149
+              },
+              "resilient": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 149
+              }
+            },
+            "required": [
+              "trade",
+              "feed",
+              "regular",
+              "resilient"
+            ],
+            "additionalProperties": false,
+            "description": "Trade is signed acres (positive buys, negative sells). Feed is people. Total planting must fit land after trade and current labor. Total grain cost of trade, feed and seed cannot exceed stored grain."
+          },
+          "decision_seconds": 0.0023,
+          "action": {
+            "trade": 6,
+            "feed": 100,
+            "regular": 0,
+            "resilient": 135
+          },
+          "error": null,
+          "model_version": null,
+          "usage": null,
+          "transition": {
+            "accepted": true,
+            "reason": "accepted",
+            "event": {
+              "year": 3,
+              "drought": false,
+              "harvest": 3375,
+              "starved": 0,
+              "trade": 6,
+              "feed": 100,
+              "regular": 0,
+              "resilient": 135
+            },
+            "outcome": {
+              "terminal": true,
+              "reason": "secured",
+              "score": 6751,
+              "success": true
+            }
+          }
+        }
+      ],
+      "split": "held-out",
+      "estimated_cost_usd": 0.0
+    },
+    {
+      "case": "lean",
+      "seed": 302,
+      "policy": "vertex",
+      "outcome": {
+        "terminal": true,
+        "reason": "illegal_action",
+        "score": 5380,
+        "success": false
+      },
+      "game_outcome": {
+        "terminal": false,
+        "reason": "ongoing",
+        "score": 5380,
+        "success": false
+      },
+      "steps": 0,
+      "step_attempts": 1,
+      "model_calls": 1,
+      "illegal_actions": 1,
+      "seconds": 1.0925,
+      "usage": {
+        "attempts_with_usage": 1,
+        "attempts_without_usage": 0,
+        "input_tokens": 622,
+        "output_tokens": 41,
+        "thinking_tokens": null,
+        "total_tokens": 663,
+        "cached_input_tokens": null
+      },
+      "turns": [
+        {
+          "observation": {
+            "year": 1,
+            "years": 3,
+            "population": 100,
+            "land": 120,
+            "grain": 2180,
+            "drought_percent": 40,
+            "land_price": 18,
+            "previous_year": null,
+            "total_starved": 0,
+            "invalid_actions": 0,
+            "constants": {
+              "food_per_person": 20,
+              "acres_per_person": 2,
+              "max_trade": 20,
+              "regular": {
+                "seed_cost": 2,
+                "normal_yield": 30,
+                "drought_yield": 5
+              },
+              "resilient": {
+                "seed_cost": 3,
+                "normal_yield": 25,
+                "drought_yield": 20
+              }
+            }
+          },
+          "legal_actions": {
+            "type": "object",
+            "properties": {
+              "trade": {
+                "type": "integer",
+                "minimum": -20,
+                "maximum": 20
+              },
+              "feed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "regular": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 140
+              },
+              "resilient": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 140
+              }
+            },
+            "required": [
+              "trade",
+              "feed",
+              "regular",
+              "resilient"
+            ],
+            "additionalProperties": false,
+            "description": "Trade is signed acres (positive buys, negative sells). Feed is people. Total planting must fit land after trade and current labor. Total grain cost of trade, feed and seed cannot exceed stored grain."
+          },
+          "decision_seconds": 1.0924,
+          "action": {
+            "trade": 20,
+            "feed": 100,
+            "regular": 120,
+            "resilient": 20
+          },
+          "error": null,
+          "model_version": "gemini-3.5-flash-lite",
+          "usage": {
+            "input_tokens": 622,
+            "output_tokens": 41,
+            "thinking_tokens": null,
+            "total_tokens": 663,
+            "cached_input_tokens": null
+          },
+          "transition": {
+            "accepted": false,
+            "reason": "This plan needs 2660 grain, but only 2180 is stored.",
+            "event": null,
+            "outcome": {
+              "terminal": false,
+              "reason": "ongoing",
+              "score": 5380,
+              "success": false
+            }
+          }
+        }
+      ],
+      "split": "held-out",
+      "estimated_cost_usd": 0.0002891
+    }
+  ]
+}
