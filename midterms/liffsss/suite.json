@@ -1,0 +1,10 @@
+{
+  "version": "hamurabi-drought-suite-v1",
+  "declared_on": "2026-11-07",
+  "cases": [
+    {"name": "steady", "split": "development", "population": 100, "land": 100, "grain": 2800, "drought_percent": [20, 25, 20], "seeds": [101, 102]},
+    {"name": "dry", "split": "held-out", "population": 100, "land": 110, "grain": 3300, "drought_percent": [65, 75, 70], "seeds": [201, 202]},
+    {"name": "lean", "split": "held-out", "population": 100, "land": 120, "grain": 2180, "drought_percent": [40, 55, 45], "seeds": [301, 302]}
+  ],
+  "protocol": "Both policies face identical case/seed pairs. Run one independent live episode per pair, six total, plus six scripted episodes. Keep dry and lean out of prompt tuning. Report every attempt and use paired score differences descriptively."
+}
