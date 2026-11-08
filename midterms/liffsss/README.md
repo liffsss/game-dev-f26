@@ -82,4 +82,4 @@ that same interface.
 - [Declared suite](suite.json) and [evaluation report](EVALUATION.md)
 - [Agent team log](AGENT-TEAM.md), [agent configuration](agent-config.json), and [independent review](review.md)
 - [Human playtest notes](PLAYTEST.md)
-- Recording link: pending a reviewer-accessible upload.
+- [3:28 demo recording (MP4)](https://github.com/liffsss/game-dev-f26/releases/download/coms-e6998-midterm-demo/hamurabi-midterm-demo-silent.mp4)
